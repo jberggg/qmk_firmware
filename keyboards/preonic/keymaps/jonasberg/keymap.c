@@ -193,10 +193,10 @@ TD(TD_LSFT), KC_Z,  KC_X,    KC_C,    KC_V,    KC_B,    KC_K,    KC_M,    KC_COM
  * `-----------------------------------------------------------------------------------'
  */
 [_RAISE] = LAYOUT_preonic_grid(
-  KC_GRV,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    S(KC_9) ,  S(KC_0),    KC_BSPC,
-  KC_GRV,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_LBRC,   KC_RBRC,    KC_DEL,
-  KC_DEL,  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_UNDS, KC_EQL,  S(KC_LBRC),S(KC_RBRC), KC_BSLS,
-  _______, KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,  KC_NUHS, KC_NUBS, _______, _______, _______,
+  KC_GRV,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    _______ ,  _______, KC_BSPC,
+  KC_GRV,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    S(KC_9),   S(KC_0), KC_DEL,
+  KC_DEL,  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_UNDS, KC_EQL,  KC_LBRC,   KC_RBRC, KC_BSLS,
+  _______, KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,  KC_NUHS, KC_NUBS,S(KC_LBRC),S(KC_RBRC), _______,
   _______, _______, _______, _______, _______, _______, _______, _______, KC_MNXT, KC_VOLU , KC_VOLD , KC_MPLY
 ),
 
@@ -204,7 +204,7 @@ TD(TD_LSFT), KC_Z,  KC_X,    KC_C,    KC_V,    KC_B,    KC_K,    KC_M,    KC_COM
  * ,-----------------------------------------------------------------------------------.
  * |  F1  |  F2  |  F3  |  F4  |  F5  |  F6  |  F7  |  F8  |  F9  |  F10 |  F11 |  F12 |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |      | Reset| Debug|      |      |      |      |TermOf|TermOn| OSX  | Umla |  Del |
+ * |      | Reset| Debug|      |      |      |      |      |      | OSX  | Umla |  Del |
  * |------+------+------+------+------+-------------+------+------+------+------+------|
  * |      |      |Aud cy|Aud on|AudOff|AGnorm|AGswap|      |      | LNX  | Qwrz |      |
  * |------+------+------+------+------+------|------+------+------+------+------+------|
@@ -215,7 +215,7 @@ TD(TD_LSFT), KC_Z,  KC_X,    KC_C,    KC_V,    KC_B,    KC_K,    KC_M,    KC_COM
  */
 [_ADJUST] = LAYOUT_preonic_grid(
   KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,
-  _______, RESET,   DEBUG,   _______, _______, _______, _______, TERM_ON, TERM_OFF, OSX_MODE, QWERTZ_UMLAUTE, KC_DEL,
+  _______, RESET,   DEBUG,   _______, _______, _______, _______, _______, _______, OSX_MODE, QWERTZ_UMLAUTE, KC_DEL,
   _______, _______, MU_MOD,  AU_ON,   AU_OFF,  AG_NORM, AG_SWAP, _______, _______, LINUX_MODE, QWERTZ, _______,
   _______, MUV_DE,  MUV_IN,  MU_ON,   MU_OFF,  MI_ON,   MI_OFF,  _______, _______, _______, COLEMAK, _______,
   _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______
@@ -329,7 +329,7 @@ bool encoder_update(bool clockwise) {
   return true;
 }
 
-void dip_switch_update_user(uint8_t index, bool active) {
+bool dip_switch_update_user(uint8_t index, bool active) {
     switch (index) {
         case 0:
             if (active) {
@@ -345,6 +345,7 @@ void dip_switch_update_user(uint8_t index, bool active) {
                 muse_mode = false;
             }
     }
+    return true;
 }
 
 
