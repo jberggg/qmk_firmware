@@ -1,0 +1,4 @@
+SRC += muse.c
+TAP_DANCE_ENABLE = yes
+UNICODE_ENABLE = yes
+AUDIO_ENABLE = yes
