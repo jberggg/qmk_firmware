@@ -261,6 +261,18 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       }
       return false;
       break;
+    case OSX_MODE:
+      if (record->event.pressed) {
+        set_unicode_input_mode(UC_MAC);
+      }
+      return false;
+      break;
+    case LINUX_MODE:
+      if (record->event.pressed) {
+        set_unicode_input_mode(UC_LNX);
+      }
+      return false;
+      break;
     case BACKLIT:
       if (record->event.pressed) {
         register_code(KC_RSFT);
