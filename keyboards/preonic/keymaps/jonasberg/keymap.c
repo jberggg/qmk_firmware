@@ -91,69 +91,78 @@ tap_dance_action_t tap_dance_actions[] = {
     [TD_RIGHT]   = ACTION_TAP_DANCE_DOUBLE(KC_RGHT,S(KC_DOT))
 };
 
+// Aliases for tab dance actions
+#define TDK_AÄ    TD(TD_AÄ)
+#define TDK_OÖ    TD(TD_OÖ)
+#define TDK_UÜ    TD(TD_UÜ)
+#define TDK_LSFT  TD(TD_LSFT)
+#define TDK_SLSH  TD(TD_SLSH)
+#define TDK_LEFT  TD(TD_LEFT)
+#define TDK_RGHT  TD(TD_RIGHT)
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 /* Qwertz w. double tab Umlaute
  * ,-----------------------------------------------------------------------------------.
- * | Esc  |   1  |   2  |   3  |   4  |   5  |   6  |   7  |   8  |   9  |   0  | Bksp |
+ * | Esc  |   1  |   2  |   3  |   4  |   5  |   6  |   7  |   8  |   9  |   0  | Del  |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | `    |   Q  |   W  |   E  |   R  |   T  |   Y  |   U  |   I  |   O  |   P  | Del  |
+ * | Esc  |   Q  |   W  |   E  |   R  |   T  |   Y  |   U  |   I  |   O  |   P  | Bksp |
  * |------+------+------+------+------+-------------+------+------+------+------+------|
- * | Tab  |   A  |   S  |   D  |   F  |   G  |   H  |   J  |   K  |   L  |   ;  |  "   |
+ * | Tab  |   A  |   S  |   D  |   F  |   G  |   H  |   J  |   K  |   L  |   ;  |  '   |
  * |------+------+------+------+------+------|------+------+------+------+------+------|
  * | Shift|   Z  |   X  |   C  |   V  |   B  |   N  |   M  |   ,  |   .  |   /  |Enter |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | Brite| Ctrl | Alt  | GUI  |Lower |    Space    |Raise | Left | Up   | Down |Right |
+ * | Brite| Ctrl | Alt  | GUI  |Lower |    Space    |Raise | Left | Down | Up   |Right |
  * `-----------------------------------------------------------------------------------'
  */
 [_QWERTZ_UMLAUTE] = LAYOUT_preonic_grid(
-  KC_ESC,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_BSPC,
-  KC_GRV,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,   KC_Z, TD(TD_UÜ),  KC_I,  TD(TD_OÖ), KC_P,    KC_DEL,
-  KC_TAB,  TD(TD_AÄ), KC_S,    KC_D,    KC_F,   KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT,
-  TD(TD_LSFT), KC_Y , KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,TD(TD_SLSH),KC_ENT,
-  RGB_TOG, KC_LCTL, KC_LALT, KC_LGUI, LOWER,   KC_SPC,  KC_SPC,  RAISE,   TD(TD_LEFT), KC_UP,   KC_DOWN,  TD(TD_RIGHT)
+    KC_ESC,    KC_1,    KC_2,    KC_3,  KC_4,   KC_5,   KC_6,   KC_7,      KC_8,    KC_9,     KC_0, KC_DEL,
+    KC_ESC,    KC_Q,    KC_W,    KC_E,  KC_R,   KC_T,   KC_Z, TDK_UÜ,      KC_I,  TDK_OÖ,     KC_P, KC_BSPC,
+    KC_TAB,  TDK_AÄ,    KC_S,    KC_D,  KC_F,   KC_G,   KC_H,   KC_J,      KC_K,    KC_L,  KC_SCLN, KC_QUOT,
+  TDK_LSFT,    KC_Y,    KC_X,    KC_C,  KC_V,   KC_B,   KC_N,   KC_M,   KC_COMM,  KC_DOT, TDK_SLSH, KC_ENT,
+   RGB_TOG, KC_LCTL, KC_LALT, KC_LGUI, LOWER, KC_SPC, KC_SPC,   RAISE, TDK_LEFT, KC_DOWN,    KC_UP, TDK_RGHT
 ),
 
 /* Qwertz
  * ,-----------------------------------------------------------------------------------.
- * | Esc  |   1  |   2  |   3  |   4  |   5  |   6  |   7  |   8  |   9  |   0  | Bksp |
+ * | Esc  |   1  |   2  |   3  |   4  |   5  |   6  |   7  |   8  |   9  |   0  | Del  |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | `    |   Q  |   W  |   E  |   R  |   T  |   Y  |   U  |   I  |   O  |   P  | Del  |
+ * | Esc  |   Q  |   W  |   E  |   R  |   T  |   Y  |   U  |   I  |   O  |   P  | Bksp |
  * |------+------+------+------+------+-------------+------+------+------+------+------|
- * | Tab  |   A  |   S  |   D  |   F  |   G  |   H  |   J  |   K  |   L  |   ;  |  "   |
+ * | Tab  |   A  |   S  |   D  |   F  |   G  |   H  |   J  |   K  |   L  |   ;  |  '   |
  * |------+------+------+------+------+------|------+------+------+------+------+------|
  * | Shift|   Z  |   X  |   C  |   V  |   B  |   N  |   M  |   ,  |   .  |   /  |Enter |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | Brite| Ctrl | Alt  | GUI  |Lower |    Space    |Raise | Left | Up   | Down |Right |
+ * | Brite| Ctrl | Alt  | GUI  |Lower |    Space    |Raise | Left | Down | Up   |Right |
  * `-----------------------------------------------------------------------------------'
  */
 [_QWERTZ] = LAYOUT_preonic_grid(
-  KC_ESC,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_BSPC,
-  KC_GRV,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,   KC_Z,     KC_U,  KC_I,      KC_O, KC_P,    KC_DEL,
-  KC_TAB,  KC_A,    KC_S,    KC_D,    KC_F,   KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT,
-  TD(TD_LSFT), KC_Y , KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,TD(TD_SLSH),KC_ENT,
-  RGB_TOG, KC_LCTL, KC_LALT, KC_LGUI, LOWER,   KC_SPC,  KC_SPC,  RAISE,   TD(TD_LEFT), KC_UP,   KC_DOWN,  TD(TD_RIGHT)
+    KC_ESC,    KC_1,    KC_2,    KC_3,  KC_4,   KC_5,   KC_6,  KC_7,     KC_8,    KC_9,     KC_0,  KC_DEL,
+    KC_ESC,    KC_Q,    KC_W,    KC_E,  KC_R,   KC_T,   KC_Z,  KC_U,     KC_I,    KC_O,     KC_P, KC_BSPC,
+    KC_TAB,    KC_A,    KC_S,    KC_D,  KC_F,   KC_G,   KC_H,  KC_J,     KC_K,    KC_L,  KC_SCLN, KC_QUOT,
+  TDK_LSFT,    KC_Y,    KC_X,    KC_C,  KC_V,   KC_B,   KC_N,  KC_M,  KC_COMM,  KC_DOT, TDK_SLSH,  KC_ENT,
+   RGB_TOG, KC_LCTL, KC_LALT, KC_LGUI, LOWER, KC_SPC, KC_SPC, RAISE, TDK_LEFT, KC_DOWN,    KC_UP, TDK_RGHT
 ),
 
 /* Colemak
  * ,-----------------------------------------------------------------------------------.
- * | Esc  |   1  |   2  |   3  |   4  |   5  |   6  |   7  |   8  |   9  |   0  | Bksp |
+ * | Esc  |   1  |   2  |   3  |   4  |   5  |   6  |   7  |   8  |   9  |   0  | Del  |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | `    |   Q  |   W  |   F  |   P  |   G  |   J  |   L  |   U  |   Y  |   ;  | Del  |
+ * | Esc  |   Q  |   W  |   F  |   P  |   G  |   J  |   L  |   U  |   Y  |   ;  | Bksp |
  * |------+------+------+------+------+-------------+------+------+------+------+------|
- * | Tab  |   A  |   R  |   S  |   T  |   D  |   H  |   N  |   E  |   I  |   O  |  "   |
+ * | Tab  |   A  |   R  |   S  |   T  |   D  |   H  |   N  |   E  |   I  |   O  |  '   |
  * |------+------+------+------+------+------|------+------+------+------+------+------|
  * | Shift|   Z  |   X  |   C  |   V  |   B  |   K  |   M  |   ,  |   .  |   /  |Enter |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | Brite| Ctrl | Alt  | GUI  |Lower |    Space    |Raise | Left | Up   | Down |Right |
+ * | Brite| Ctrl | Alt  | GUI  |Lower |    Space    |Raise | Left | Down | Up   |Right |
  * `-----------------------------------------------------------------------------------'
  */
 [_COLEMAK] = LAYOUT_preonic_grid(
-  KC_ESC,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_BSPC,
-  KC_GRV,  KC_Q,    KC_W,    KC_F,    KC_P,    KC_G,    KC_J,    KC_L,   TD(TD_UÜ), KC_Y,   KC_SCLN, KC_DEL,
-  KC_TAB, TD(TD_AÄ), KC_R,    KC_S,    KC_T,    KC_D,    KC_H,    KC_N,    KC_E,    KC_I,   TD(TD_OÖ), KC_QUOT,
-TD(TD_LSFT), KC_Z,  KC_X,    KC_C,    KC_V,    KC_B,    KC_K,    KC_M,    KC_COMM, KC_DOT,TD(TD_SLSH),KC_ENT,
-  RGB_TOG, KC_LCTL, KC_LALT, KC_LGUI, LOWER,   KC_SPC,  KC_SPC,  RAISE,   TD(TD_LEFT), KC_UP,   KC_DOWN,  TD(TD_RIGHT)
+    KC_ESC,    KC_1,    KC_2,    KC_3,  KC_4,   KC_5,   KC_6,  KC_7,     KC_8,    KC_9,     KC_0,  KC_DEL,
+    KC_ESC,    KC_Q,    KC_W,    KC_F,  KC_P,   KC_G,   KC_J,  KC_L,   TDK_UÜ,    KC_Y,  KC_SCLN, KC_BSPC,
+    KC_TAB,  TDK_AÄ,    KC_R,    KC_S,  KC_T,   KC_D,   KC_H,  KC_N,     KC_E,    KC_I,   TDK_OÖ, KC_QUOT,
+  TDK_LSFT,    KC_Z,    KC_X,    KC_C,  KC_V,   KC_B,   KC_K,  KC_M,  KC_COMM,  KC_DOT, TDK_SLSH,  KC_ENT,
+   RGB_TOG, KC_LCTL, KC_LALT, KC_LGUI, LOWER, KC_SPC, KC_SPC, RAISE, TDK_LEFT, KC_DOWN,    KC_UP, TDK_RGHT
 ),
 
 /* Lower
@@ -166,15 +175,15 @@ TD(TD_LSFT), KC_Z,  KC_X,    KC_C,    KC_V,    KC_B,    KC_K,    KC_M,    KC_COM
  * |------+------+------+------+------+------|------+------+------+------+------+------|
  * |      |      |      |      |      |      |      |      |      |      |      |      |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |      |      |      |      |      |             |      | Home | PgUp | PgDn | End  |
+ * |      |      |      |      |      |             |      | Home | PgDn | PgUp | End  |
  * `-----------------------------------------------------------------------------------'
  */
 [_LOWER] = LAYOUT_preonic_grid(
-  KC_TILD, KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC, KC_CIRC, KC_AMPR, KC_ASTR,   _______, _______,  KC_BSPC,
-  _______,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,         KC_0, KC_DEL,
-  KC_F12,   KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,  KC_F10,  KC_F11,
+  KC_TILD, KC_EXLM,   KC_AT, KC_HASH,  KC_DLR, KC_PERC, KC_CIRC, KC_AMPR, KC_ASTR, _______, _______, KC_BSPC,
+  _______,    KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,  KC_DEL,
+  KC_F12,    KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,  KC_F10,  KC_F11,
   _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
-  _______, _______, _______, _______, _______, _______, _______, _______, KC_HOME, KC_PGUP,   KC_PGDN,  KC_END
+  _______, _______, _______, _______, _______, _______, _______, _______, KC_HOME, KC_PGDN, KC_PGUP,  KC_END
 ),
 
 /* Raise
@@ -187,15 +196,15 @@ TD(TD_LSFT), KC_Z,  KC_X,    KC_C,    KC_V,    KC_B,    KC_K,    KC_M,    KC_COM
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * |      |      |      |      |      |      |      |   _  |   =  |   {  |   }  |  ~   |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |      |      |      |      |      |             |      | Next | Vol+ | Vol-| Play |
+ * |      |      |      |      |      |             |      | Next | Vol- | Vol+ | Play |
  * `-----------------------------------------------------------------------------------'
  */
 [_RAISE] = LAYOUT_preonic_grid(
-  KC_GRV,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    _______ ,  _______, KC_BSPC,
-  KC_GRV,  KC_EXLM,   KC_AT, KC_HASH, KC_DLR,  KC_PERC, KC_CIRC, KC_AMPR, KC_ASTR, S(KC_9), S(KC_0), KC_DEL,
+  KC_GRV,     KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8, _______, _______, KC_BSPC,
+  KC_GRV,  KC_EXLM,   KC_AT, KC_HASH, KC_DLR,  KC_PERC, KC_CIRC, KC_AMPR, KC_ASTR, S(KC_9), S(KC_0),  KC_DEL,
   _______, _______, _______, _______, _______, _______, _______, KC_PLUS, KC_MINS, KC_LBRC, KC_RBRC, KC_PIPE,
   _______, _______, _______, _______, _______, _______, _______, KC_UNDS, KC_EQL , KC_LCBR, KC_RCBR, KC_TILD,
-  _______, _______, _______, _______, _______, _______, _______, _______, KC_MNXT, KC_VOLU, KC_VOLD, KC_MPLY
+  _______, _______, _______, _______, _______, _______, _______, _______, KC_MNXT, KC_VOLD, KC_VOLU, KC_MPLY
 ),
 
 /* Adjust (Lower + Raise)
@@ -204,7 +213,7 @@ TD(TD_LSFT), KC_Z,  KC_X,    KC_C,    KC_V,    KC_B,    KC_K,    KC_M,    KC_COM
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * |      | Reset|Debug | RGB  |RGBMOD| HUE+ | HUE- | SAT+ | SAT- | OSX  |QwrtzU|BRGTH+|
  * |------+------+------+------+------+-------------+------+------+------+------+------|
- * |      |      |Aud cy|Aud on|AudOff|AGnorm|AGswap|      |      | LNX  | Qwrz |      |
+ * |      |      |Aud cy|Aud on|AudOff|AGnorm|AGswap|      |      | LNX  | Qwrz |BRGTH-|
  * |------+------+------+------+------+------|------+------+------+------+------+------|
  * |      |Voice-|Voice+|Mus on|MusOff|MidiOn|MidOff|      |      |      | Clmk |      |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
@@ -212,11 +221,11 @@ TD(TD_LSFT), KC_Z,  KC_X,    KC_C,    KC_V,    KC_B,    KC_K,    KC_M,    KC_COM
  * `-----------------------------------------------------------------------------------'
  */
 [_ADJUST] = LAYOUT_preonic_grid(
-  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,
-  _______, QK_BOOT,DB_TOGG, RGB_TOG, RGB_MOD, RGB_HUI, RGB_HUD, RGB_SAI, RGB_SAD,  UC_MAC, QWERTZ_UMLAUTE, RGB_VAI,
-  _______, _______,MU_NEXT,  AU_ON,   AU_OFF,  AG_NORM, AG_SWAP, _______, _______,UC_LINX, QWERTZ, RGB_VAD,
-  _______, AU_PREV, AU_NEXT,  MU_ON,   MU_OFF,  MI_ON,   MI_OFF,  _______, _______, _______, COLEMAK, _______,
-  _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______
+  KC_F1  ,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,  KC_F10,         KC_F11,  KC_F12,
+  _______, QK_BOOT, DB_TOGG, RGB_TOG, RGB_MOD, RGB_HUI, RGB_HUD, RGB_SAI, RGB_SAD,  UC_MAC, QWERTZ_UMLAUTE, RGB_VAI,
+  _______, _______, MU_NEXT,   AU_ON,  AU_OFF, AG_NORM, AG_SWAP, _______, _______, UC_LINX,         QWERTZ, RGB_VAD,
+  _______, AU_PREV, AU_NEXT,   MU_ON,  MU_OFF,   MI_ON,  MI_OFF, _______, _______, _______,        COLEMAK, _______,
+  _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,        _______, _______
 )
 
 };
