@@ -1,7 +1,9 @@
 # Jonas Berg's Preonic Layout
 
 Variation of the Preonic default layout that works for languages that use umlaut e.g.
-german and at the same time is compatible with Linux and OSX.
+german or swiss german and at the same time is compatible with Linux and OSX.
+
+This layout is "handling" wise compatible with my [Planck keyboard layout](../../../planck/keymaps/jonasberg/readme.md).
 
 Changes from the default preonic keyboard layout besides some key swaps:
 
