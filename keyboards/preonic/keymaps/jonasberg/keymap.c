@@ -82,13 +82,14 @@ enum tap {
 };
 
 tap_dance_action_t tap_dance_actions[] = {
-    [TD_AÄ]   = ACTION_TAP_DANCE_FN(send_unicode_a_or_ae),
-    [TD_OÖ]   = ACTION_TAP_DANCE_FN(send_unicode_o_or_oe),
-    [TD_UÜ]   = ACTION_TAP_DANCE_FN(send_unicode_u_or_ue),
-    [TD_LSFT] = ACTION_TAP_DANCE_DOUBLE(KC_LSFT, KC_CAPS),
-    [TD_SLSH] = ACTION_TAP_DANCE_DOUBLE(KC_SLSH,KC_BSLS),
-    [TD_LEFT]   = ACTION_TAP_DANCE_DOUBLE(KC_LEFT,S(KC_COMMA)),
-    [TD_RIGHT]   = ACTION_TAP_DANCE_DOUBLE(KC_RGHT,S(KC_DOT))
+    [TD_AÄ]    = ACTION_TAP_DANCE_FN(send_unicode_a_or_ae),
+    [TD_OÖ]    = ACTION_TAP_DANCE_FN(send_unicode_o_or_oe),
+    [TD_UÜ]    = ACTION_TAP_DANCE_FN(send_unicode_u_or_ue),
+    [TD_LSFT]  = ACTION_TAP_DANCE_DOUBLE(KC_LSFT, KC_CAPS),
+    [TD_SLSH]  = ACTION_TAP_DANCE_DOUBLE(KC_SLSH,KC_BSLS),
+    [TD_LEFT]  = ACTION_TAP_DANCE_DOUBLE(KC_LEFT,S(KC_COMMA)),
+    [TD_RIGHT] = ACTION_TAP_DANCE_DOUBLE(KC_RGHT,S(KC_DOT)),
+    [TD_QUOTE] = ACTION_TAP_DANCE_DOUBLE(KC_QUOT,KC_GRV),
 };
 
 // Aliases for tab dance actions
@@ -99,6 +100,7 @@ tap_dance_action_t tap_dance_actions[] = {
 #define TDK_SLSH  TD(TD_SLSH)
 #define TDK_LEFT  TD(TD_LEFT)
 #define TDK_RGHT  TD(TD_RIGHT)
+#define TDK_QUOT  TD(TD_QUOTE)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
@@ -116,10 +118,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * `-----------------------------------------------------------------------------------'
  */
 [_QWERTZ_UMLAUTE] = LAYOUT_preonic_grid(
-    KC_ESC,    KC_1,    KC_2,    KC_3,  KC_4,   KC_5,   KC_6,   KC_7,      KC_8,    KC_9,     KC_0, KC_DEL,
-    KC_ESC,    KC_Q,    KC_W,    KC_E,  KC_R,   KC_T,   KC_Z, TDK_UÜ,      KC_I,  TDK_OÖ,     KC_P, KC_BSPC,
-    KC_TAB,  TDK_AÄ,    KC_S,    KC_D,  KC_F,   KC_G,   KC_H,   KC_J,      KC_K,    KC_L,  KC_SCLN, KC_QUOT,
-  TDK_LSFT,    KC_Y,    KC_X,    KC_C,  KC_V,   KC_B,   KC_N,   KC_M,   KC_COMM,  KC_DOT, TDK_SLSH, KC_ENT,
+    KC_ESC,    KC_1,    KC_2,    KC_3,  KC_4,   KC_5,   KC_6,   KC_7,      KC_8,    KC_9,     KC_0,  KC_DEL,
+    KC_ESC,    KC_Q,    KC_W,    KC_E,  KC_R,   KC_T,   KC_Z, TDK_UÜ,      KC_I,  TDK_OÖ,     KC_P,  KC_BSPC,
+    KC_TAB,  TDK_AÄ,    KC_S,    KC_D,  KC_F,   KC_G,   KC_H,   KC_J,      KC_K,    KC_L,  KC_SCLN, TDK_QUOT,
+  TDK_LSFT,    KC_Y,    KC_X,    KC_C,  KC_V,   KC_B,   KC_N,   KC_M,   KC_COMM,  KC_DOT, TDK_SLSH,   KC_ENT,
    RGB_TOG, KC_LCTL, KC_LALT, KC_LGUI, LOWER, KC_SPC, KC_SPC,   RAISE, TDK_LEFT, KC_DOWN,    KC_UP, TDK_RGHT
 ),
 
@@ -137,10 +139,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * `-----------------------------------------------------------------------------------'
  */
 [_QWERTZ] = LAYOUT_preonic_grid(
-    KC_ESC,    KC_1,    KC_2,    KC_3,  KC_4,   KC_5,   KC_6,  KC_7,     KC_8,    KC_9,     KC_0,  KC_DEL,
-    KC_ESC,    KC_Q,    KC_W,    KC_E,  KC_R,   KC_T,   KC_Z,  KC_U,     KC_I,    KC_O,     KC_P, KC_BSPC,
-    KC_TAB,    KC_A,    KC_S,    KC_D,  KC_F,   KC_G,   KC_H,  KC_J,     KC_K,    KC_L,  KC_SCLN, KC_QUOT,
-  TDK_LSFT,    KC_Y,    KC_X,    KC_C,  KC_V,   KC_B,   KC_N,  KC_M,  KC_COMM,  KC_DOT, TDK_SLSH,  KC_ENT,
+    KC_ESC,    KC_1,    KC_2,    KC_3,  KC_4,   KC_5,   KC_6,  KC_7,     KC_8,    KC_9,     KC_0,   KC_DEL,
+    KC_ESC,    KC_Q,    KC_W,    KC_E,  KC_R,   KC_T,   KC_Z,  KC_U,     KC_I,    KC_O,     KC_P,  KC_BSPC,
+    KC_TAB,    KC_A,    KC_S,    KC_D,  KC_F,   KC_G,   KC_H,  KC_J,     KC_K,    KC_L,  KC_SCLN, TDK_QUOT,
+  TDK_LSFT,    KC_Y,    KC_X,    KC_C,  KC_V,   KC_B,   KC_N,  KC_M,  KC_COMM,  KC_DOT, TDK_SLSH,   KC_ENT,
    RGB_TOG, KC_LCTL, KC_LALT, KC_LGUI, LOWER, KC_SPC, KC_SPC, RAISE, TDK_LEFT, KC_DOWN,    KC_UP, TDK_RGHT
 ),
 
@@ -158,10 +160,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * `-----------------------------------------------------------------------------------'
  */
 [_COLEMAK] = LAYOUT_preonic_grid(
-    KC_ESC,    KC_1,    KC_2,    KC_3,  KC_4,   KC_5,   KC_6,  KC_7,     KC_8,    KC_9,     KC_0,  KC_DEL,
-    KC_ESC,    KC_Q,    KC_W,    KC_F,  KC_P,   KC_G,   KC_J,  KC_L,   TDK_UÜ,    KC_Y,  KC_SCLN, KC_BSPC,
-    KC_TAB,  TDK_AÄ,    KC_R,    KC_S,  KC_T,   KC_D,   KC_H,  KC_N,     KC_E,    KC_I,   TDK_OÖ, KC_QUOT,
-  TDK_LSFT,    KC_Z,    KC_X,    KC_C,  KC_V,   KC_B,   KC_K,  KC_M,  KC_COMM,  KC_DOT, TDK_SLSH,  KC_ENT,
+    KC_ESC,    KC_1,    KC_2,    KC_3,  KC_4,   KC_5,   KC_6,  KC_7,     KC_8,    KC_9,     KC_0,   KC_DEL,
+    KC_ESC,    KC_Q,    KC_W,    KC_F,  KC_P,   KC_G,   KC_J,  KC_L,   TDK_UÜ,    KC_Y,  KC_SCLN,  KC_BSPC,
+    KC_TAB,  TDK_AÄ,    KC_R,    KC_S,  KC_T,   KC_D,   KC_H,  KC_N,     KC_E,    KC_I,   TDK_OÖ, TDK_QUOT,
+  TDK_LSFT,    KC_Z,    KC_X,    KC_C,  KC_V,   KC_B,   KC_K,  KC_M,  KC_COMM,  KC_DOT, TDK_SLSH,   KC_ENT,
    RGB_TOG, KC_LCTL, KC_LALT, KC_LGUI, LOWER, KC_SPC, KC_SPC, RAISE, TDK_LEFT, KC_DOWN,    KC_UP, TDK_RGHT
 ),
 
